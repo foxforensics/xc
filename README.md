@@ -1,13 +1,13 @@
-# go-template
-Go binary template.
+# witness
+Witness terminal commands to build a chain-of-custody.
 
 ```console
-go install go.foxforensics.dev/go-template@latest
+go install go.foxforensics.dev/witness@latest
 ```
 
 ## Usage
 ```console
-$ go-template arg
+$ witness COMMAND [ARG ...]
 ```
 
 ## License

@@ -1,3 +1,3 @@
-module go.foxforensics.dev/go-template
+module go.foxforensics.dev/witness
 
 go 1.26
