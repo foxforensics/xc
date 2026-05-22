@@ -1,3 +1,3 @@
-module go.foxforensics.dev/witness
+module go.foxforensics.dev/xc
 
 go 1.26
