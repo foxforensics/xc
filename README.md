@@ -13,7 +13,7 @@ $ xc COMMAND ...
 DESCRIPTION
 ===========
 
-xr is an experimental terminal chain-of-custody tool. It targets to answer two main questions about event logs: WHAT and WHEN did it happen? Contrary to existing tools, it tries to answer these questions by analyzing the raw event record structure, rather than parsing whole event log chunks. By reading from any input stream, xr is capable of carving raw forensic disk images and memory dumps.
+xc is an experimental terminal chain-of-custody tool. It executes the given command, prints the combined output of STDOUT and STDERR, and hashes this output using the SHA256 hash algorithm. Any input from STDIN will be forwarded to the command. Any occurring error will be returned transparently and the commands exit code will be mirrored.
 
 INSTALLATION
 ============
