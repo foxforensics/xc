@@ -15,9 +15,7 @@ import (
 	"time"
 )
 
-const Format = `[%s] %s
-%s
-SHA256 %x`
+const Format = "[%s] %s\n%s\nSHA256 %x"
 
 func main() {
 	defer func() {
