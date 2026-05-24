@@ -12,13 +12,12 @@ import (
 	"os"
 	"os/exec"
 	"strings"
+	"time"
 )
 
-const Format = `%s
---
+const Format = `[%s] %s
 %s
---
-%x`
+SHA256 %x`
 
 func main() {
 	defer func() {
@@ -28,18 +27,19 @@ func main() {
 		}
 	}()
 
-	cmd := exec.Command(os.Args[1], os.Args[2:]...)
-	cmd.Stdin = os.Stdin // optional input
+	if len(os.Args) >= 2 {
+		now := time.Now().UTC()
+		cmd := exec.Command(os.Args[1], os.Args[2:]...)
+		cmd.Stdin = os.Stdin // optional input
+		buf, err := cmd.CombinedOutput()
 
-	b, err := cmd.CombinedOutput()
-
-	if err != nil {
-		fmt.Print(string(b)) // mirror error
-
-		if ex, ok := errors.AsType[*exec.ExitError](err); ok {
-			os.Exit(ex.ExitCode())
+		if err != nil {
+			fmt.Print(string(buf)) // mirror error
+			if ex, ok := errors.AsType[*exec.ExitError](err); ok {
+				os.Exit(ex.ExitCode())
+			}
 		}
-	}
 
-	fmt.Printf(Format, strings.Join(os.Args[1:], " "), b, sha256.Sum256(b))
+		fmt.Printf(Format, now.Format(time.RFC3339), strings.Join(os.Args[1:], " "), buf, sha256.Sum256(buf))
+	}
 }
