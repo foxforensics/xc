@@ -19,7 +19,7 @@ INSTALLATION
 ============
 
 ```console
-$ go install go.foxforensics.dev/xc@latest
+$ go install go.foxforensics.eu/xc@latest
 ```
 
 REFERENCES
